@@ -16,6 +16,7 @@
   justify-content: space-between;
   flex-direction: column;
   min-width: 25vw;
+  width: 45vw;
 }
 
 .divider {
@@ -24,7 +25,8 @@
   margin: 10px 0;
 }
 
-.input {
+.input,
+.select {
   border: 2px solid #94a3b8;
   outline: none;
   padding: 10px 10px;
@@ -37,4 +39,52 @@
 .label {
   color: #94a3b8;
   margin-bottom: 5px;
+}
+
+.btnSection {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: right;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  outline: none;
+  padding: 10px 15px;
+  border: 2px solid #475569;
+  color: #e2e8f0;
+  background-color: #1e293b;
+  font-weight: bolder;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #475569;
+  color: #cbd5e1;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.secondaryBtn {
+  outline: none;
+  padding: 10px 15px;
+  border: 2px solid;
+  color: #475569;
+  border-color: #475569;
+  font-weight: bolder;
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.secondaryBtn:hover {
+  border-color: #94a3b8;
+  color: #94a3b8;
 }
