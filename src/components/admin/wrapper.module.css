@@ -57,14 +57,7 @@
 
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 10px;
   padding: 10px;
-  height: calc(100vh - 72px);
-}
-
-.secondary {
-  color: #475569;
+  gap: 10px;
 }

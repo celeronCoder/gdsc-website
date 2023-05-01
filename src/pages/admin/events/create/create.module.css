@@ -1,0 +1,40 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 72px);
+  padding: 10px;
+}
+
+.card {
+  border: 2px solid #94a3b8;
+  border-radius: 10px;
+  color: #e2e8f0;
+  padding: 10px 25px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-width: 25vw;
+}
+
+.divider {
+  color: #94a3b8;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.input {
+  border: 2px solid #94a3b8;
+  outline: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  background-color: #e2e8f0;
+  margin-bottom: 10px;
+}
+
+.label {
+  color: #94a3b8;
+  margin-bottom: 5px;
+}
