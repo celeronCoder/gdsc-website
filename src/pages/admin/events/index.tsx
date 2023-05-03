@@ -17,12 +17,36 @@ export default function EventsPage() {
       {!events || isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <div className={styles.grid}>
           {events.length === 0 &&
             "There are no events right now please create..."}
 
           {events.map((event) => (
-            <div>{event.name}</div>
+            <Link
+              href={`/admin/events/${event.id}`}
+              className={styles.card}
+              key={event.id}
+            >
+              <img
+                className={styles.image}
+                src={
+                  event.image
+                    ? event.image
+                    : "https://developers.google.com/community/gdsc/images/gdsc-social-share.png"
+                }
+              />
+              <div className={styles.cardContent}>
+                <h3>{event.name}</h3>
+                <p className={styles.tag}>{event.tag}</p>
+
+                <p className={styles.secondaryText}>{event.tagLine}</p>
+
+                <p className={styles.secondaryText}>
+                  {event.date.toLocaleDateString()} at{" "}
+                  {event.date.toLocaleTimeString()}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       )}

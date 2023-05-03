@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 72px);
   padding: 10px;
 }
 
@@ -15,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  min-width: 25vw;
+  min-width: fit-content;
   width: 45vw;
 }
 
@@ -39,6 +38,16 @@
 .label {
   color: #94a3b8;
   margin-bottom: 5px;
+  font-size: small;
+}
+
+.previewImage {
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+  outline: none;
+  margin: 10px 0;
+  border: 2px solid #94a3b8;
 }
 
 .btnSection {

@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { string, z } from "zod";
 import { EventType } from "@prisma/client";
 
 import {
@@ -9,9 +9,11 @@ import {
 
 const eventDetails = z.object({
   name: z.string(),
-  dateFrom: z.date(),
-  dateTill: z.date(),
+  date: z.date(),
   tag: z.nativeEnum(EventType),
+  tagLine: z.string().optional(),
+  description: z.string().optional(),
+  image: z.string().optional(),
 });
 
 export const eventRouter = createTRPCRouter({
