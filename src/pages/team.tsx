@@ -1,18 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import Head from "next/head";
 import Footer from "~/components/Footer";
 import MemberCard from "~/components/Member-Card";
-import Navbar from "~/components/Navbar";
 import TeamMemberInfo from "~/components/TeamMemberInfo";
+import { Wrapper } from "~/components";
 
 export default function Teams() {
   return (
-    <div className="main--container">
-      <Head>
-        <title>Team | GDSC x VITB</title>
-      </Head>
-      <Navbar />
+    <Wrapper title="Team">
       <Image
         className="bg--img light--mode"
         src={"/images/teambg.jpg"}
@@ -82,6 +77,6 @@ export default function Teams() {
         <TeamMemberInfo />
       </div>
       <Footer />
-    </div>
+    </Wrapper>
   );
 }

@@ -1,21 +1,16 @@
 import AboutCards from "~/components/About-Card";
 import CommunityPartners from "~/components/Community-Partners";
 import Footer from "~/components/Footer";
-import Navbar from "~/components/Navbar";
 import Sponsor from "~/components/Sponsors";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Head from "next/head";
+import { Wrapper } from "~/components";
 
 export default function About() {
   const router = useRouter();
 
   return (
-    <div className="main--container about">
-      <Head>
-        <title>About | GDSC x VITB</title>
-      </Head>
-      <Navbar />
+    <Wrapper title="About">
       <Image
         className="bg--img light--mode"
         src={"/images/aboutbg.jpg"}
@@ -60,6 +55,6 @@ export default function About() {
       <CommunityPartners />
       <Sponsor />
       <Footer />
-    </div>
+    </Wrapper>
   );
 }

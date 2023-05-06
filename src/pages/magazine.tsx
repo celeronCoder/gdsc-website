@@ -1,7 +1,6 @@
 import Footer from "~/components/Footer";
-import Navbar from "~/components/Navbar";
 import Image from "next/image";
-import Head from "next/head";
+import { Wrapper } from "~/components";
 
 export default function Magazine() {
   const open = () => {
@@ -9,11 +8,7 @@ export default function Magazine() {
   };
 
   return (
-    <div className="main--container">
-      <Head>
-        <title>GDSC x VITB | Magazine</title>
-      </Head>
-      <Navbar />
+    <Wrapper title="Magazine">
       <Image
         className="bg--img light--mode"
         src={"/images/magazinebg.jpg"}
@@ -53,6 +48,6 @@ export default function Magazine() {
         </div>
       </span>
       <Footer />
-    </div>
+    </Wrapper>
   );
 }
