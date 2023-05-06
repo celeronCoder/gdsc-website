@@ -68,19 +68,21 @@ export default function EventCreatePage() {
             name="eventName"
           />
 
-          {/* date from */}
+          {/* date */}
           <label className={styles.label} htmlFor="date">
-            Date
+            Date From
           </label>
           <input
             type="date"
             className={styles.input}
             name="date"
-            value={date.toDateString()}
+            value={`${date.getFullYear()}-${
+              date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()
+            }-${date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()}`}
             onChange={(e) => setDate(new Date(e.target.value))}
           />
 
-          {/* date till */}
+          {/* time */}
           <label className={styles.label} htmlFor="time">
             Time
           </label>
@@ -88,6 +90,13 @@ export default function EventCreatePage() {
             type="time"
             className={styles.input}
             name="time"
+            value={`${
+              date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()
+            }:${
+              date.getMinutes() < 10
+                ? `0${date.getMinutes()}`
+                : date.getMinutes()
+            }`}
             onChange={(e) => {
               const [hours, min] = e.target.value.split(":");
               date.setHours(parseInt(hours!), parseInt(min!));
