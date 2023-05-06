@@ -25,6 +25,12 @@ export const Wrapper: React.FC<{ children: React.ReactNode }> = ({
 
           {/* the other Links */}
           <div className={styles.navLinks}>
+            <Link href={"/"} className={styles.link}>
+              Home
+            </Link>
+            <Link href={"/admin"} className={styles.link}>
+              Admin
+            </Link>
             <Link href={"/admin/events"} className={styles.link}>
               Events
             </Link>
