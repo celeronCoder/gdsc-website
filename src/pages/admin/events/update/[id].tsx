@@ -103,7 +103,11 @@ export default function EventCreatePage() {
             name="time"
             value={`${
               date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()
-            }:${date.getMinutes()}`}
+            }:${
+              date.getMinutes() < 10
+                ? `0${date.getMinutes()}`
+                : date.getMinutes()
+            }`}
             onChange={(e) => {
               const [hours, min] = e.target.value.split(":");
               date.setHours(parseInt(hours!), parseInt(min!));
