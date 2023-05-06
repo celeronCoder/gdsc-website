@@ -1,35 +1,48 @@
 import { EventType } from "@prisma/client";
 
 import { AdminWrapper } from "~/components";
-import styles from "./create.module.css";
+import styles from "./update.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { api } from "~/utils/api";
 import { useRouter } from "next/router";
 
 export default function EventCreatePage() {
-  const [eventName, setEventName] = useState("");
-  const [date, setDate] = useState(new Date());
-  const [tag, setTag] = useState<EventType>("WEB");
+  const router = useRouter();
+  const id = router.query.id as string;
+
+  const { data: event, isLoading: isEventLoading } = api.event.getById.useQuery(
+    { id }
+  );
+
+  const [eventName, setEventName] = useState(event?.name ? event.name : "");
+  const [date, setDate] = useState(event?.date ? event.date : new Date());
+  const [tag, setTag] = useState<EventType>(event?.tag ? event.tag : "WEB");
   const [imagePath, setImagePath] = useState(
-    "https://developers.google.com/community/gdsc/images/gdsc-social-share.png"
+    event?.image
+      ? event.image
+      : "https://developers.google.com/community/gdsc/images/gdsc-social-share.png"
   );
   const [image, setImage] = useState<Blob | null>();
 
-  const [tagLine, setTagLine] = useState<string>();
-  const [description, setDescription] = useState<string>();
+  const [tagLine, setTagLine] = useState<string | undefined>(
+    event?.tagLine ? event.tagLine : undefined
+  );
+  const [description, setDescription] = useState<string | undefined>(
+    event?.description ? event.description : undefined
+  );
 
-  const { mutateAsync: createEvent } = api.event.create.useMutation();
-  const router = useRouter();
+  const { mutateAsync: updateEvent } = api.event.updateEvent.useMutation();
 
-  const create = async () => {
-    const res = await createEvent({
+  const update = async () => {
+    const res = await updateEvent({
       date,
       tag,
       name: eventName,
       image: imagePath,
       tagLine,
       description,
+      id,
     });
     console.log(res);
     router.push("/admin/events");
@@ -45,9 +58,7 @@ export default function EventCreatePage() {
     }
   }, [image]);
 
-  useEffect(() => {
-    console.log(date);
-  }, [date]);
+  if (!event || isEventLoading) return <AdminWrapper>Loading...</AdminWrapper>;
 
   return (
     <AdminWrapper>
@@ -68,19 +79,21 @@ export default function EventCreatePage() {
             name="eventName"
           />
 
-          {/* date from */}
+          {/* date */}
           <label className={styles.label} htmlFor="date">
-            Date
+            Date From
           </label>
           <input
             type="date"
             className={styles.input}
             name="date"
-            value={date.toDateString()}
+            value={`${date.getFullYear()}-${
+              date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()
+            }-${date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()}`}
             onChange={(e) => setDate(new Date(e.target.value))}
           />
 
-          {/* date till */}
+          {/* time */}
           <label className={styles.label} htmlFor="time">
             Time
           </label>
@@ -88,6 +101,9 @@ export default function EventCreatePage() {
             type="time"
             className={styles.input}
             name="time"
+            value={`${
+              date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()
+            }:${date.getMinutes()}`}
             onChange={(e) => {
               const [hours, min] = e.target.value.split(":");
               date.setHours(parseInt(hours!), parseInt(min!));
@@ -157,10 +173,10 @@ export default function EventCreatePage() {
             </Link>
             <button
               disabled={eventName.length === 0}
-              onClick={create}
+              onClick={update}
               className={styles.btn}
             >
-              Add
+              Update
             </button>
           </div>
         </div>
