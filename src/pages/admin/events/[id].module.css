@@ -1,0 +1,68 @@
+.main {
+  width: 100%;
+  height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content {
+  max-width: fit-content;
+  width: 50%;
+  gap: 20px;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+
+.secondaryText {
+  color: #94a3b8;
+}
+
+.tag {
+  background-color: red;
+  border-radius: 2px;
+  padding: 0 5px;
+  font-size: x-small;
+  width: fit-content;
+  margin: 5px 0;
+}
+
+.image {
+  height: 300px;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  gap: 10px;
+}
+
+.updateBtn {
+  padding: 10px 15px;
+  outline: 0;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 2px solid #e2e8f0;
+  color: #e2e8f0;
+  font-weight: bold;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  font-size: small;
+}
+
+.goBackBtn {
+  padding: 10px 15px;
+  outline: 0;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 2px solid #94a3b8;
+  color: #94a3b8;
+  font-weight: bold;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  font-size: small;
+}

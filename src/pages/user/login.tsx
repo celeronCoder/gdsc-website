@@ -7,6 +7,8 @@ import { signIn } from "next-auth/react";
 
 const lato = Lato({ weight: ["400", "700"], subsets: ["latin"] });
 
+// TODO: say unauthenticated if the user not in gdsc vit bhopal organization
+
 export default function LoginPage() {
   return (
     <div style={lato.style} className={styles.main}>
