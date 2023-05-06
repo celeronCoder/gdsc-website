@@ -1,16 +1,11 @@
 import EventBox from "~/components/Event-Box";
 import Footer from "~/components/Footer";
-import Navbar from "~/components/Navbar";
 import Image from "next/image";
-import Head from "next/head";
+import { Wrapper } from "~/components";
 
 export default function Blog() {
   return (
-    <div className="main--container">
-      <Head>
-        <title>Blog | GDSC x VITB</title>
-      </Head>
-      <Navbar />
+    <Wrapper title="Blog">
       <Image
         className="bg--img light--mode"
         src={"/images/blogbg.jpg"}
@@ -46,6 +41,6 @@ export default function Blog() {
         <EventBox />
       </div>
       <Footer />
-    </div>
+    </Wrapper>
   );
 }

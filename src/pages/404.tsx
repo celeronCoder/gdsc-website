@@ -1,3 +1,9 @@
-export default function PageNotFound(){
-    return <h1>404 error. Page not found</h1>
+import { Wrapper } from "~/components";
+
+export default function PageNotFound() {
+  return (
+    <Wrapper title="404">
+      <h1>Error 404: Page not found</h1>
+    </Wrapper>
+  );
 }

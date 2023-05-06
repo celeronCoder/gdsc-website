@@ -9,14 +9,11 @@ import ReachUs from "~/components/ReachUs";
 import RecentEvents from "~/components/Recent-Events";
 import Sponsor from "~/components/Sponsors";
 import Team from "~/components/Team";
+import { Wrapper } from "~/components";
 
 export default function Main() {
   return (
-    <>
-      <Head>
-        <title>GDSC x VITB</title>
-      </Head>
-      <Navbar />
+    <Wrapper title="Home">
       {/* Home Components */}
       <section className="home--page">
         <Home />
@@ -29,6 +26,6 @@ export default function Main() {
         <JoinCommunity />
       </section>
       <Footer />
-    </>
+    </Wrapper>
   );
 }

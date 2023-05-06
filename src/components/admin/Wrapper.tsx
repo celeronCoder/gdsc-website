@@ -1,10 +1,11 @@
 import Head from "next/head";
 import React from "react";
 import styles from "./wrapper.module.css";
-const lato = Lato({ weight: ["400", "700"], subsets: ["latin"] });
-import { Lato } from "next/font/google";
+import { Barlow } from "next/font/google";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+
+const barlow = Barlow({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const Wrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -14,7 +15,7 @@ export const Wrapper: React.FC<{ children: React.ReactNode }> = ({
       <Head>
         <title>Admin | GDSC VIT Bhopal</title>
       </Head>
-      <div style={lato.style} className={styles.main}>
+      <div style={barlow.style} className={styles.main}>
         <nav className={styles.nav}>
           {/* the primary Link */}
           <div>

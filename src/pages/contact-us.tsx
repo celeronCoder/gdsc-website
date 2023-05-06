@@ -1,20 +1,15 @@
 import Footer from "~/components/Footer";
 import JoinCommunity from "~/components/Join-Community";
-import Navbar from "~/components/Navbar";
 import ReachUs from "~/components/ReachUs";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Head from "next/head";
+import { Wrapper } from "~/components";
 
 export default function ContactUs() {
   const router = useRouter();
 
   return (
-    <div className="main--container">
-      <Head>
-        <title>Contact | GDSC x VITB</title>
-      </Head>
-      <Navbar />
+    <Wrapper title="Contact Us">
       <Image
         className="bg--img light--mode"
         src={"/images/contactbg.jpg"}
@@ -62,6 +57,6 @@ export default function ContactUs() {
       <ReachUs />
       <JoinCommunity />
       <Footer />
-    </div>
+    </Wrapper>
   );
 }

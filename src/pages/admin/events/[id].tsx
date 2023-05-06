@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Wrapper } from "~/components/admin/Wrapper";
+import { AdminWrapper } from "~/components";
 import { api } from "~/utils/api";
 
 import styles from "./[id].module.css";
@@ -12,7 +12,7 @@ export default function EventDetails() {
   });
 
   return (
-    <Wrapper>
+    <AdminWrapper>
       {isLoading || !event ? (
         <p>Loading...</p>
       ) : (
@@ -50,6 +50,6 @@ export default function EventDetails() {
           </div>
         </div>
       )}
-    </Wrapper>
+    </AdminWrapper>
   );
 }
