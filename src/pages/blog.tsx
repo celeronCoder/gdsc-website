@@ -32,14 +32,7 @@ export default function Blog() {
           culture references.
         </p>
       </span>
-      <div className="events--holder">
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
-      </div>
+      <div className="events--holder"></div>
       <Footer />
     </Wrapper>
   );
