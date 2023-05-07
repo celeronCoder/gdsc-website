@@ -42,9 +42,21 @@ export default function EventsPage() {
               />
               <div className={styles.cardContent}>
                 <h3 className={styles.noMargin}>{event.name}</h3>
-                <p className={`${styles.tag} ${styles.noMargin}`}>
-                  {event.tag}
-                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "10px",
+                  }}
+                >
+                  <p className={`${styles.tag} ${styles.noMargin}`}>
+                    {event.tag}
+                  </p>
+                  <p className={`${styles.tag} ${styles.noMargin}`}>
+                    {event.venueType}
+                  </p>
+                </div>
 
                 <p className={`${styles.secondaryText} ${styles.noMargin}`}>
                   {event.tagLine}

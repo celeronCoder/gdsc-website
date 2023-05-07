@@ -31,7 +31,9 @@ const EventCard: React.FC<{
                   dateStyle: "full",
                 })}
               </p>
-              <p>Venue: online</p>
+              <p>
+                Venue [{event.venueType}] {event.venue && `: ${event.venue}`}
+              </p>
               <p>Organizer Team: {event.tag}</p>
             </div>
           </div>
