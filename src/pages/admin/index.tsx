@@ -6,7 +6,7 @@ import { authOptions } from "~/server/auth";
 export default function AdminPage() {
   return (
     <AdminWrapper>
-      <h4>Welcome to the GDSC VIT Bhopal's Admin Page</h4>
+      <h3>Welcome to the GDSC VIT Bhopal's Admin Page</h3>
       <p style={{ color: "#475569" }}>This is the page only for Admins</p>
     </AdminWrapper>
   );

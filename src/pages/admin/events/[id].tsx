@@ -33,10 +33,12 @@ export default function EventDetails() {
               </button>
             </div>
             <img src={event.image!} className={styles.image} />
-            <div>
-              <h2>{event.name}</h2>
-              <p className={styles.secondaryText}>{event.tagLine}</p>
-              <p className={styles.tag}>{event.tag}</p>
+            <div className={styles.container}>
+              <h2 className={styles.noMargin}>{event.name}</h2>
+              <p className={`${styles.secondaryText} ${styles.noMargin}`}>
+                {event.tagLine}
+              </p>
+              <p className={`${styles.tag} ${styles.noMargin}`}>{event.tag}</p>
             </div>
 
             <p>

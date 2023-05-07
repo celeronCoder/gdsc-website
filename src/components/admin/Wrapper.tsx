@@ -38,14 +38,12 @@ export const Wrapper: React.FC<{ children: React.ReactNode }> = ({
           </div>
 
           {/* the logout */}
-          <div>
-            <button
-              onClick={() => signOut({ callbackUrl: window.location.origin })}
-              className={styles.logoutBtn}
-            >
-              Log Out
-            </button>
-          </div>
+          <button
+            onClick={() => signOut({ callbackUrl: window.location.origin })}
+            className={styles.logoutBtn}
+          >
+            Log Out
+          </button>
         </nav>
         <main className={styles.container}>{children}</main>
       </div>
