@@ -2,17 +2,22 @@ import { AdminWrapper } from "~/components";
 import { api } from "~/utils/api";
 import styles from "./events.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function EventsPage() {
   const { data: events, isLoading } = api.event.getAll.useQuery();
+  const router = useRouter();
 
   return (
     <AdminWrapper>
       <div className={styles.headingContainer}>
-        <h2>Events</h2>
-        <Link href="/admin/events/create" className={styles.createBtn}>
+        <h2 className={styles.noMargin}>Events</h2>
+        <button
+          onClick={() => router.push("/admin/events/create")}
+          className={styles.createBtn}
+        >
           Add Event
-        </Link>
+        </button>
       </div>
       {!events || isLoading ? (
         <p>Loading...</p>
@@ -22,8 +27,8 @@ export default function EventsPage() {
             "There are no events right now please create..."}
 
           {events.map((event) => (
-            <Link
-              href={`/admin/events/${event.id}`}
+            <div
+              onClick={() => router.push(`/admin/events/${event.id}`)}
               className={styles.card}
               key={event.id}
             >
@@ -36,17 +41,21 @@ export default function EventsPage() {
                 }
               />
               <div className={styles.cardContent}>
-                <h3>{event.name}</h3>
-                <p className={styles.tag}>{event.tag}</p>
+                <h3 className={styles.noMargin}>{event.name}</h3>
+                <p className={`${styles.tag} ${styles.noMargin}`}>
+                  {event.tag}
+                </p>
 
-                <p className={styles.secondaryText}>{event.tagLine}</p>
+                <p className={`${styles.secondaryText} ${styles.noMargin}`}>
+                  {event.tagLine}
+                </p>
 
-                <p className={styles.secondaryText}>
+                <p className={`${styles.secondaryText} ${styles.noMargin}`}>
                   {event.date.toLocaleDateString()} at{" "}
                   {event.date.toLocaleTimeString()}
                 </p>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       )}

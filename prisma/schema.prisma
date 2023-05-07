@@ -18,6 +18,10 @@ enum EventType {
     WEB
     ANDROID
     AIML
+    NON_TECH
+    BLOCKCHAIN
+    WOMEN_TECHMAKERS
+    CONTENT_WRITING
 }
 
 model Event {

@@ -39,6 +39,8 @@
 }
 
 .logoutBtn {
+  width: fit-content;
+  min-width: fit-content;
   outline: none;
   padding: 5px 10px;
   border: 2px solid;

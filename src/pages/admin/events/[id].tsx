@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Wrapper } from "~/components/admin/Wrapper";
+import { AdminWrapper } from "~/components";
 import { api } from "~/utils/api";
 
 import styles from "./[id].module.css";
@@ -12,7 +12,7 @@ export default function EventDetails() {
   });
 
   return (
-    <Wrapper>
+    <AdminWrapper>
       {isLoading || !event ? (
         <p>Loading...</p>
       ) : (
@@ -33,10 +33,12 @@ export default function EventDetails() {
               </button>
             </div>
             <img src={event.image!} className={styles.image} />
-            <div>
-              <h2>{event.name}</h2>
-              <p className={styles.secondaryText}>{event.tagLine}</p>
-              <p className={styles.tag}>{event.tag}</p>
+            <div className={styles.container}>
+              <h2 className={styles.noMargin}>{event.name}</h2>
+              <p className={`${styles.secondaryText} ${styles.noMargin}`}>
+                {event.tagLine}
+              </p>
+              <p className={`${styles.tag} ${styles.noMargin}`}>{event.tag}</p>
             </div>
 
             <p>
@@ -50,6 +52,6 @@ export default function EventDetails() {
           </div>
         </div>
       )}
-    </Wrapper>
+    </AdminWrapper>
   );
 }

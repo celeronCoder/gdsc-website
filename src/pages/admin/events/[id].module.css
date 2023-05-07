@@ -1,10 +1,15 @@
 .main {
   width: 100%;
-  height: calc(100vh - 72px);
+  min-height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.noMargin {
+  margin: 0;
+  width: fit-content;
 }
 
 .content {
@@ -13,6 +18,13 @@
   gap: 20px;
   display: flex;
   justify-content: left;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 

@@ -1,17 +1,26 @@
 import EventBox from "~/components/Event-Box";
 import FilterDiv from "~/components/FilterBox";
 import Footer from "~/components/Footer";
-import Navbar from "~/components/Navbar";
 import Image from "next/image";
-import Head from "next/head";
+import { Wrapper } from "~/components";
+import { api } from "~/utils/api";
+import { useEffect, useState } from "react";
+import { Event } from "@prisma/client";
 
 export default function Events() {
+  const { data } = api.event.getAll.useQuery();
+  const [allEvents, setAllEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    if (data) {
+      setAllEvents(data);
+      setEvents(data);
+    }
+  }, [data]);
+
   return (
-    <div className="main--container">
-      <Head>
-        <title>Events | GDSC x VITB</title>
-      </Head>
-      <Navbar />
+    <Wrapper title="Events">
       <Image
         className="bg--img light--mode"
         src={"/images/eventbg.jpg"}
@@ -38,16 +47,13 @@ export default function Events() {
           world.
         </p>
       </span>
-      <FilterDiv />
+      <FilterDiv setEvents={setEvents} allEvents={allEvents} />
       <div className="events--holder">
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
+        {events.length === 0
+          ? "Loading..."
+          : events.map((event) => <EventBox key={event.id} event={event} />)}
       </div>
       <Footer />
-    </div>
+    </Wrapper>
   );
 }
