@@ -9,6 +9,7 @@
 }
 
 .card {
+  width: fit-content;
   border-radius: 10px;
   border: 1px solid #94a3b8;
   padding: 30px 25px;
