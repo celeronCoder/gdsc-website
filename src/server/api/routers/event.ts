@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { EventType } from "@prisma/client";
+import { EventType, VENUE_TYPE } from "@prisma/client";
 
 import {
   createTRPCRouter,
@@ -13,6 +13,8 @@ const eventDetails = z.object({
   tag: z.nativeEnum(EventType),
   tagLine: z.string().optional(),
   description: z.string().optional(),
+  venueType: z.nativeEnum(VENUE_TYPE),
+  venue: z.string().optional(),
   image: z.string().optional(),
 });
 

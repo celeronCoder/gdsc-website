@@ -24,15 +24,22 @@ enum EventType {
     CONTENT_WRITING
 }
 
+enum VENUE_TYPE {
+    ONLINE
+    OFFLINE
+}
+
 model Event {
-    id          String    @id @default(cuid())
+    id          String      @id @default(cuid())
     name        String
     tagLine     String?
     description String?
     date        DateTime
     tag         EventType
     image       String?
-    createdBy   User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    venueType   VENUE_TYPE? @default(ONLINE)
+    venue       String?     @default("")
+    createdBy   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId      String
 }
 
