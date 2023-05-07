@@ -3,8 +3,22 @@ import FilterDiv from "~/components/FilterBox";
 import Footer from "~/components/Footer";
 import Image from "next/image";
 import { Wrapper } from "~/components";
+import { api } from "~/utils/api";
+import { useEffect, useState } from "react";
+import { Event } from "@prisma/client";
 
 export default function Events() {
+  const { data } = api.event.getAll.useQuery();
+  const [allEvents, setAllEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    if (data) {
+      setAllEvents(data);
+      setEvents(data);
+    }
+  }, [data]);
+
   return (
     <Wrapper title="Events">
       <Image
@@ -33,14 +47,11 @@ export default function Events() {
           world.
         </p>
       </span>
-      <FilterDiv />
+      <FilterDiv setEvents={setEvents} allEvents={allEvents} />
       <div className="events--holder">
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
-        <EventBox />
+        {events.length === 0
+          ? "Loading..."
+          : events.map((event) => <EventBox key={event.id} event={event} />)}
       </div>
       <Footer />
     </Wrapper>
