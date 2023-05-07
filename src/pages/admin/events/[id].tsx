@@ -38,7 +38,21 @@ export default function EventDetails() {
               <p className={`${styles.secondaryText} ${styles.noMargin}`}>
                 {event.tagLine}
               </p>
-              <p className={`${styles.tag} ${styles.noMargin}`}>{event.tag}</p>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "10px",
+                }}
+              >
+                <p className={`${styles.tag} ${styles.noMargin}`}>
+                  {event.tag}
+                </p>
+                <p className={`${styles.tag} ${styles.noMargin}`}>
+                  {event.venueType}
+                </p>
+              </div>
             </div>
 
             <p>
@@ -49,6 +63,7 @@ export default function EventDetails() {
             <p className={styles.secondaryText}>
               {event.date.toLocaleString()}
             </p>
+            <p className={styles.secondaryText}>{event.venue}</p>
           </div>
         </div>
       )}

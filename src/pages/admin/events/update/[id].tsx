@@ -1,4 +1,4 @@
-import { EventType } from "@prisma/client";
+import { EventType, VENUE_TYPE } from "@prisma/client";
 
 import { AdminWrapper } from "~/components";
 import styles from "./update.module.css";
@@ -32,6 +32,13 @@ export default function EventCreatePage() {
     event?.description ? event.description : undefined
   );
 
+  const [venueType, setVenueType] = useState<VENUE_TYPE>(
+    event?.venueType ? event.venueType : "ONLINE"
+  );
+  const [venue, setVenue] = useState<string | undefined>(
+    event?.venue ? event.venue : undefined
+  );
+
   const { mutateAsync: updateEvent } = api.event.updateEvent.useMutation();
 
   const update = async () => {
@@ -43,6 +50,8 @@ export default function EventCreatePage() {
       tagLine,
       description,
       id,
+      venue,
+      venueType,
     });
     console.log(res);
     router.push("/admin/events");
@@ -114,6 +123,35 @@ export default function EventCreatePage() {
               console.log(date);
               setDate(date);
             }}
+          />
+
+          {/* venue type */}
+          <label className={styles.label} htmlFor="venueType">
+            Venue Type
+          </label>
+          <select
+            name="venueType"
+            className={styles.select}
+            value={venueType}
+            onChange={(e) => setVenueType(e.target.value as VENUE_TYPE)}
+          >
+            {Object.values(VENUE_TYPE).map((venueType) => (
+              <option key={venueType} value={venueType}>
+                {venueType.toUpperCase()}
+              </option>
+            ))}
+          </select>
+
+          {/* venue */}
+          <label className={styles.label} htmlFor="venue">
+            Venue
+          </label>
+          <input
+            value={venue}
+            onChange={(e) => setVenue(e.target.value)}
+            type="text"
+            className={styles.input}
+            name="venue"
           />
 
           {/* tag */}
