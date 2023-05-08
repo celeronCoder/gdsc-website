@@ -707,24 +707,19 @@ select {
 }
 
 .close--btn {
-  position: fixed;
+  position: relative;
   z-index: 1;
-  width: 90%;
-  display: flex;
-  justify-content: center;
+  width: 100%;
   margin-bottom: 5px;
 }
 
 .close--btn button {
   position: relative;
-  left: 50%;
-  transform: translateX(-90%);
+  left: 100%;
+  transform: translateX(-100%);
   background: transparent;
   border: none;
   width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   z-index: 1;
 }
