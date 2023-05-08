@@ -736,7 +736,7 @@ select {
 }
 
 .poster {
-  width: 450px;
+  width: 100%;
   height: 350px;
   border: 1px solid var(--text-color);
   border-radius: 16px;
@@ -770,7 +770,7 @@ select {
 
 .event--box {
   width: 350px;
-  height: 350px;
+  height: 450px;
   cursor: pointer;
   border-radius: 16px;
   display: flex;
@@ -784,7 +784,7 @@ select {
 
 .event--box div {
   width: 325px;
-  height: 175px;
+  height: 225px;
   border: 1px solid black;
   border-radius: 16px;
   background-size: contain;
